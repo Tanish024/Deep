@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: deepfake-detector-api
+    runtime: python
+    plan: free
+    buildCommand: pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: FAKE_THRESHOLD
+        value: "0.5"
+      - key: HF_HOME
+        value: "./models"
+      - key: PYTHON_VERSION
+        value: "3.11.0"

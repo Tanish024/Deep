@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.env
+*.egg
+.venv/
+venv/
+
+# HuggingFace model cache (large files, auto-downloaded)
+models/
+
+# Temp files
+*.tmp
+*.bak
