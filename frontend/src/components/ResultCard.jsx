@@ -65,15 +65,7 @@ export default function ResultCard({ result }) {
         </div>
       </div>
 
-      {/* Model Badge */}
-      <div className="px-6 pb-6">
-        <p className="text-xs text-gray-400 text-center">
-          Detected by:{" "}
-          <span className="font-mono font-medium text-gray-500">
-            {result.model_used}
-          </span>
-        </p>
-      </div>
+
     </div>
   );
 }

@@ -160,9 +160,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="text-center py-6 text-xs text-gray-400">
-        Powered by{" "}
-        <span className="font-mono">yermandy/deepfake-detection</span> — CLIP
-        ViT-L/14 fine-tuned on FaceForensics++
+        Deepfake Detector — AI-powered video authenticity analysis
       </footer>
     </div>
   );

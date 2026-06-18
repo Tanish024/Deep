@@ -98,6 +98,5 @@ def analyze_video(video_path: str) -> dict:
         "confidence": round(confidence * 100, 2),
         "frame_scores": [round(s, 4) for s in scores],
         "total_frames": len(scores),
-        "model_used": "yermandy/deepfake-detection",
         "threshold_used": threshold,
     }
