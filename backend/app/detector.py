@@ -65,10 +65,10 @@ def classify_frame(pil_image: Image.Image) -> float:
     # Forward pass through TorchScript model
     logits = _model(pixel_values)
 
-    # Model outputs shape [1, 2]: [real_logit, fake_logit]
-    # Apply softmax to get probabilities, take index 1 for P(fake)
+    # Model outputs shape [1, 2]: [fake_logit, real_logit]
+    # Apply softmax to get probabilities, take index 0 for P(fake)
     probs = torch.softmax(logits, dim=-1)
-    p_fake = probs[0, 1].item()
+    p_fake = probs[0, 0].item()
     return float(p_fake)
 
 
