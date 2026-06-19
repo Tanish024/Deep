@@ -2,6 +2,11 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
+// Common headers — ngrok-skip-browser-warning bypasses ngrok's interstitial page
+const COMMON_HEADERS = {
+  "ngrok-skip-browser-warning": "true",
+};
+
 /**
  * Upload a video file and run deepfake analysis.
  * @param {File} file - The video file to analyze.
@@ -14,7 +19,10 @@ export async function analyzeVideo(file, onUploadProgress) {
 
   try {
     const response = await axios.post(`${API_URL}/analyze`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        ...COMMON_HEADERS,
+      },
       timeout: 300000, // 5 minutes for slow CPU analysis
       onUploadProgress: (progressEvent) => {
         const percent = Math.round(
@@ -47,6 +55,7 @@ export async function analyzeVideo(file, onUploadProgress) {
 export async function checkHealth() {
   try {
     const response = await axios.get(`${API_URL}/health`, {
+      headers: COMMON_HEADERS,
       timeout: 10000,
     });
     return response.data;
